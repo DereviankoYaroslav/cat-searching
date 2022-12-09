@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { first, Observable, tap } from 'rxjs';
 import { IBreeds } from 'src/app/models/breeds';
 import { ICats } from 'src/app/models/cats';
 import { BreedService } from 'src/app/services/breed.service';
@@ -22,25 +22,17 @@ export class DisplayPageComponent {
   ) {}
 
   ngOnInit(): void {
-    this.breeds = this.breedService
-      .fetchBreeds()
-      .pipe(tap(() => console.log(this.breeds)));
-    this.cats = this.catService
-      .fetchCats(this.defaultAmount, this.breed)
-      .pipe(tap(() => console.log(this.cats)));
+    this.breeds = this.breedService.fetchBreeds();
+    this.cats = this.catService.fetchCats(this.defaultAmount, this.breed);
   }
 
   onAmountChange = (amount: number) => {
     this.defaultAmount = amount;
-    this.cats = this.catService
-      .fetchCats(amount, this.breed)
-      .pipe(tap(() => console.log(this.cats)));
+    this.cats = this.catService.fetchCats(amount, this.breed);
   };
 
   onBreedChange = (breed: string) => {
     this.breed = breed;
-    this.cats = this.catService
-      .fetchCats(this.defaultAmount, breed)
-      .pipe(tap(() => console.log(this.cats)));
+    this.cats = this.catService.fetchCats(this.defaultAmount, breed);
   };
 }
