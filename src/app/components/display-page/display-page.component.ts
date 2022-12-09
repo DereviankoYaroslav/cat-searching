@@ -12,8 +12,8 @@ import { CatService } from 'src/app/services/cats.service';
 })
 export class DisplayPageComponent {
   breeds: Observable<IBreeds[]>;
-  breed: string;
-  amount: number;
+  breed: string = 'abys';
+  defaultAmount: number = 1;
   cats: Observable<ICats[]>;
 
   constructor(
@@ -24,20 +24,23 @@ export class DisplayPageComponent {
   ngOnInit(): void {
     this.breeds = this.breedService
       .fetchBreeds()
-      .pipe(tap(() => console.log(this.cats)));
+      .pipe(tap(() => console.log(this.breeds)));
     this.cats = this.catService
-      .fetchCats(5, 'beng')
+      .fetchCats(this.defaultAmount, this.breed)
       .pipe(tap(() => console.log(this.cats)));
   }
 
   onAmountChange = (amount: number) => {
-    this.amount = amount;
+    this.defaultAmount = amount;
+    this.cats = this.catService
+      .fetchCats(amount, this.breed)
+      .pipe(tap(() => console.log(this.cats)));
   };
 
-  /* onBreedChange = (breed: string) => {
+  onBreedChange = (breed: string) => {
     this.breed = breed;
     this.cats = this.catService
-      .fetchCats('beng')
+      .fetchCats(this.defaultAmount, breed)
       .pipe(tap(() => console.log(this.cats)));
-  }; */
+  };
 }

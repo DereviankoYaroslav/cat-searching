@@ -1,12 +1,9 @@
 <div class="mt-[60px]" *ngIf="breeds | async as breeds">
-    <app-select-filters [breeds]="breeds"></app-select-filters>
-    <div *ngFor="let breed of breeds">
-        {{breed.id}} {{breed.name}}
-    </div>
+    <app-select-filters [breeds]="breeds" (onAmountChange)="onAmountChange($event)" [amount]="defaultAmount" (onBreedChange)="onBreedChange($event)" [breed]="breed"></app-select-filters>
 </div>
 
-<div class="mt-[60px]" *ngIf="cats | async as cats">
-    <div *ngFor="let cat of cats">
-        <img src={{cat.url}}>
+<div class="mt-[50px] flex items-center flex-col mb-2 m-auto justify-center" *ngIf="cats | async as cats">
+    <div *ngFor="let cat of cats" class="mb-2">
+        <img src={{cat.url}} class="max-w-4xl">
     </div>
 </div>
