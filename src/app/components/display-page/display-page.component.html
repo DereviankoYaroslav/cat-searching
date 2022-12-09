@@ -2,8 +2,13 @@
     <app-select-filters [breeds]="breeds" (onAmountChange)="onAmountChange($event)" [amount]="defaultAmount" (onBreedChange)="onBreedChange($event)" [breed]="breed"></app-select-filters>
 </div>
 
-<div class="mt-[50px] flex items-center flex-col mb-2 m-auto justify-center" *ngIf="cats | async as cats">
-    <div *ngFor="let cat of cats" class="mb-2">
-        <img src={{cat.url}} class="max-w-4xl">
-    </div>
+<div class="card-wrapper border-2 roundedmt-[50px] flex items-center flex-col mb-2 m-auto justify-center max-w-4xl" *ngIf="cats | async as cats">
+        <mat-card class="example-card">
+            <div *ngFor="let cat of cats" class="mb-2">
+                <img src={{cat.url}}>
+            </div>
+            <mat-card-content>
+                {{cats[0].breeds[0].description}}
+            </mat-card-content>
+        </mat-card>
 </div>
