@@ -4,6 +4,8 @@ export interface ICats {
       description: string;
       life_span: string;
       origin: string;
+      temperament: string;
+      alt_names: string;
     }
   ];
   id: string;

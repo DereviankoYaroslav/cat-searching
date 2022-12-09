@@ -5,11 +5,17 @@
 <div class="card-wrapper flex items-center flex-col mt-2 m-auto justify-center max-w-4xl" *ngIf="cats | async as cats">
     <mat-card class="example-card rounded border-8 mb-5">
         <mat-card-content class="text-left">
+            <div *ngIf="cats[0].breeds[0].alt_names">
+            <p><span class="font-bold">Alt Name:</span> {{cats[0].breeds[0].alt_names}}</p>
+            <hr />
+            </div>
             <p><span class="font-bold">Description:</span> {{cats[0].breeds[0].description}}</p>
             <hr />
             <p><span class="font-bold">Life Span:</span> {{cats[0].breeds[0].life_span}}</p>
             <hr />
             <p><span class="font-bold">Origin:</span> {{cats[0].breeds[0].origin}}</p>
+            <hr />
+            <p><span class="font-bold">Temperament:</span> {{cats[0].breeds[0].temperament}}</p>
             <hr />
         </mat-card-content>
         <div *ngFor="let cat of cats" class="mt-2">

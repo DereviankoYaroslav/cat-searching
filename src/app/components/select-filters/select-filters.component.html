@@ -1,6 +1,6 @@
 <div class="text-xl">
     <label for="brSelect">Select Breed:</label>
-    <select (change)="onChangeBr($event)" class="border-2 rounded m-2" id="brSelect">
+    <select (change)="onChangeBr($event)" class="border-2 rounded m-2 hover:cursor-pointer" id="brSelect">
         <option *ngFor="let breed of breeds" value="{{breed.id}}">{{breed.name}}</option>
     </select>
     <label for="amInput">Enter the amount:</label> 
