@@ -13,7 +13,7 @@ import { CatService } from 'src/app/services/cats.service';
 export class DisplayPageComponent {
   breeds: Observable<IBreeds[]>;
   breed: string = 'abys';
-  defaultAmount: number = 1;
+  defaultAmount: number = 10;
   cats: Observable<ICats[]>;
 
   constructor(

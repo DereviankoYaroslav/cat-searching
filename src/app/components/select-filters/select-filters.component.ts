@@ -13,7 +13,7 @@ export class SelectFiltersComponent {
   @Output() onAmountChange = new EventEmitter<number>();
   @Output() onBreedChange = new EventEmitter<string>();
 
-  onChangeF = (value: Event) => {
+  onChangeBr = (value: Event) => {
     let x = (value.target as HTMLInputElement).value;
     this.breed = x;
     this.onBreedChange.emit(this.breed);

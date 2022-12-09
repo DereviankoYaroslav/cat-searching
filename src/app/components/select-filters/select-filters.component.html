@@ -1,5 +1,8 @@
 <div class="text-xl">
-    <select (change)="onChangeF($event)">
+    <label for="brSelect">Select Breed:</label>
+    <select (change)="onChangeBr($event)" class="border-2 rounded m-2" id="brSelect">
         <option *ngFor="let breed of breeds" value="{{breed.id}}">{{breed.name}}</option>
-    </select> <input type="text" class="border-2 rounded pl-1" id="qwerty1" value="{{amount}}" (input)="setAmount($event)">
+    </select>
+    <label for="amInput">Enter the amount:</label> 
+    <input type="text" class="border-2 rounded pl-1 m-2" id="qwerty1" value="{{amount}}" (input)="setAmount($event)" id="amInput">
 </div>
