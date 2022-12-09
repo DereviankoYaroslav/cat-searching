@@ -1,0 +1,6 @@
+<div class="mt-[60px]" *ngIf="breeds | async as breeds">
+    <app-select-filters [breeds]="breeds"></app-select-filters>
+    <div *ngFor="let breed of breeds">
+        {{breed.id}} {{breed.name}}
+    </div>
+</div>
