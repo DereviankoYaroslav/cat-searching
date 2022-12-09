@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { IBreeds } from 'src/app/models/breeds';
-import { CatService } from 'src/app/services/cat.service';
+import { ICats } from 'src/app/models/cats';
+import { BreedService } from 'src/app/services/breed.service';
+import { CatService } from 'src/app/services/cats.service';
 
 @Component({
   selector: 'app-display-page',
@@ -10,12 +12,32 @@ import { CatService } from 'src/app/services/cat.service';
 })
 export class DisplayPageComponent {
   breeds: Observable<IBreeds[]>;
+  breed: string;
+  amount: number;
+  cats: Observable<ICats[]>;
 
-  constructor(private catService: CatService) {}
+  constructor(
+    private breedService: BreedService,
+    private catService: CatService
+  ) {}
 
   ngOnInit(): void {
-    this.breeds = this.catService
+    this.breeds = this.breedService
       .fetchBreeds()
-      .pipe(tap(() => console.log(this.breeds)));
+      .pipe(tap(() => console.log(this.cats)));
+    this.cats = this.catService
+      .fetchCats(5, 'beng')
+      .pipe(tap(() => console.log(this.cats)));
   }
+
+  onAmountChange = (amount: number) => {
+    this.amount = amount;
+  };
+
+  /* onBreedChange = (breed: string) => {
+    this.breed = breed;
+    this.cats = this.catService
+      .fetchCats('beng')
+      .pipe(tap(() => console.log(this.cats)));
+  }; */
 }

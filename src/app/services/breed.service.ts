@@ -6,7 +6,7 @@ import { IBreeds } from '../models/breeds';
 @Injectable({
   providedIn: 'root',
 })
-export class CatService {
+export class BreedService {
   constructor(private http: HttpClient) {}
 
   fetchBreeds(): Observable<IBreeds[]> {

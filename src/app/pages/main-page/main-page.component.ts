@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { IBreeds } from 'src/app/models/breeds';
-import { CatService } from 'src/app/services/cat.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-main-page',

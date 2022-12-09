@@ -4,3 +4,9 @@
         {{breed.id}} {{breed.name}}
     </div>
 </div>
+
+<div class="mt-[60px]" *ngIf="cats | async as cats">
+    <div *ngFor="let cat of cats">
+        <img src={{cat.url}}>
+    </div>
+</div>
