@@ -7,6 +7,7 @@ import { ICats } from '../models/cats';
   providedIn: 'root',
 })
 export class CatService {
+  //headers setting
   key = 'live_9pTw0xIxd8GMQqCr2C67AG6UrOHO5HJ7RrSKb7RxQ18XrazOpJ4Sx6tDm4ohSwMI';
   headerDict = {
     'Content-Type': 'application/json',
@@ -21,6 +22,8 @@ export class CatService {
       limit: limit,
       breed_ids: breed,
     };
+
+    //getting cats data with required parameters and headers
     return this.http.get<ICats[]>(
       'https://api.thecatapi.com/v1/images/search',
       {

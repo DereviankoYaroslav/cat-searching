@@ -9,6 +9,7 @@ import { IBreeds } from '../models/breeds';
 export class BreedService {
   constructor(private http: HttpClient) {}
 
+  //getting breeds data
   fetchBreeds(): Observable<IBreeds[]> {
     return this.http.get<IBreeds[]>('https://api.thecatapi.com/v1/breeds', {});
   }

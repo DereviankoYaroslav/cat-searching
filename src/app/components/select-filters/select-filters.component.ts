@@ -13,12 +13,14 @@ export class SelectFiltersComponent {
   @Output() onAmountChange = new EventEmitter<number>();
   @Output() onBreedChange = new EventEmitter<string>();
 
+  //getting the change of breed value and sending to parent component as an output
   onChangeBr = (value: Event) => {
     let x = (value.target as HTMLInputElement).value;
     this.breed = x;
     this.onBreedChange.emit(this.breed);
   };
 
+  //getting the change of amount value and sending to parent component as an output
   setAmount = (event: Event) => {
     let x = (event.target as HTMLInputElement).value;
     this.amount = x ? parseFloat(x) : 0;

@@ -1,3 +1,4 @@
+//interface for fethcing cats data
 export interface ICats {
   breeds: [
     {

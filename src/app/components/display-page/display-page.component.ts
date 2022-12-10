@@ -22,6 +22,7 @@ export class DisplayPageComponent {
     private catService: CatService
   ) {}
 
+  //fetching breeds and cats data onInit
   ngOnInit(): void {
     this.loading = true;
     this.breeds = this.breedService.fetchBreeds();
@@ -30,6 +31,7 @@ export class DisplayPageComponent {
       .pipe(tap(() => (this.loading = false)));
   }
 
+  //fetching cats data with required parameters when amount changed
   onAmountChange = (amount: number) => {
     this.loading = true;
     this.defaultAmount = amount;
@@ -38,6 +40,7 @@ export class DisplayPageComponent {
       .pipe(tap(() => (this.loading = false)));
   };
 
+  //fetching cats data with required parameters when breed changed
   onBreedChange = (breed: string) => {
     this.loading = true;
     this.breed = breed;
