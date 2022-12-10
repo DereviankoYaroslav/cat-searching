@@ -2,6 +2,8 @@
     <app-select-filters [breeds]="breeds" (onAmountChange)="onAmountChange($event)" [amount]="defaultAmount" (onBreedChange)="onBreedChange($event)" [breed]="breed"></app-select-filters>
 </div>
 
+<p *ngIf="loading" class="text-center text-4xl mt-2">Loading...</p>
+
 <div class="card-wrapper flex items-center flex-col mt-2 m-auto justify-center max-w-4xl" *ngIf="cats | async as cats">
     <mat-card class="example-card rounded border-8 mb-5">
         <mat-card-content class="text-left">

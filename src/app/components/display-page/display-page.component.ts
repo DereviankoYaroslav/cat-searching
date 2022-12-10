@@ -15,6 +15,7 @@ export class DisplayPageComponent {
   breed: string = 'abys';
   defaultAmount: number = 10;
   cats: Observable<ICats[]>;
+  loading = false;
 
   constructor(
     private breedService: BreedService,
@@ -22,17 +23,26 @@ export class DisplayPageComponent {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.breeds = this.breedService.fetchBreeds();
-    this.cats = this.catService.fetchCats(this.defaultAmount, this.breed);
+    this.cats = this.catService
+      .fetchCats(this.defaultAmount, this.breed)
+      .pipe(tap(() => (this.loading = false)));
   }
 
   onAmountChange = (amount: number) => {
+    this.loading = true;
     this.defaultAmount = amount;
-    this.cats = this.catService.fetchCats(amount, this.breed);
+    this.cats = this.catService
+      .fetchCats(amount, this.breed)
+      .pipe(tap(() => (this.loading = false)));
   };
 
   onBreedChange = (breed: string) => {
+    this.loading = true;
     this.breed = breed;
-    this.cats = this.catService.fetchCats(this.defaultAmount, breed);
+    this.cats = this.catService
+      .fetchCats(this.defaultAmount, breed)
+      .pipe(tap(() => (this.loading = false)));
   };
 }
